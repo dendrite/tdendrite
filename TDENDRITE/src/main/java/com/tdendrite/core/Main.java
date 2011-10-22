@@ -17,7 +17,8 @@ public class Main {
      */
     public static void main(String[] argv) throws Exception{
 
-       String fileName = "streamPayload777777";
+
+       String fileName = "streamPayloadio";
 
 
        SimpleClass sc = new SimpleClass();
