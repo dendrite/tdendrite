@@ -72,7 +72,7 @@ public class StreamPayload<T> implements Serializable {
 
     @Override
     public String toString() {
-        return "id:" + this.id + " className:" + this.className +" time:" + this.time + " parameters:" + this.parameters + " payload:" + new String(this.payload);
+        return "id:" + this.id + "  className:" + this.className +" time:" + this.time + " parameters:" + this.parameters + " payload:" + new String(this.payload);
     }
 
     public boolean setTypedPayload(T object){
