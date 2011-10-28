@@ -172,6 +172,8 @@
 			<build>
 				<plugins>
 
+
+
 				</plugins>
 			</build>
 		</profile>
@@ -183,7 +185,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.1.1</version>
+				<version>1.2.1</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -192,13 +194,27 @@
 						</goals>
 						<configuration>
 							<mainClass>com.tdendrite.core.Main</mainClass>
-							<arguments>
-								<argument>arg0</argument>
-								<argument>arg1</argument>
-							</arguments>
+							<!-- <arguments> <argument>arg0</argument> <argument>arg1</argument> 
+								</arguments> -->
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<archive>
+						<index>true</index>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<!-- <classpathPrefix>c:/WS/IDEA/Simple_test/target/lib/</classpathPrefix> -->
+							<mainClass>com.tdendrite.core.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
 
 			<plugin>
@@ -210,6 +226,7 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-idea-plugin</artifactId>

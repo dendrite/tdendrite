@@ -1,3 +1,4 @@
+package com.tdendrite.core;
 
 public class NewTest {
 
