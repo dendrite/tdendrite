@@ -1,6 +1,7 @@
 package com.tdendrite.core;
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -16,9 +17,11 @@ public class Main {
      * @param argv
      */
     public static void main(String[] argv) throws Exception{
+    	
+    	String PATH = new java.io.File("").getAbsolutePath();
+    	System.out.println( PATH );
 
-
-       String fileName = "streamPayloadio___D____";
+       String fileName = "streamPayloadio___D____.02";
 
 
        SimpleClass sc = new SimpleClass();
@@ -38,7 +41,7 @@ public class Main {
         }
 
        long bT = System.currentTimeMillis();
-       StreamPayload<List<SimpleClass>> sp = new StreamPayload<List<SimpleClass>>( true );
+       StreamPayload<List<SimpleClass>> sp = new StreamPayload<List<SimpleClass>>( false );
         sp.setId("sp_id");
         sp.setTime(new Date().getTime());
         sp.setParameters("parameters...");
@@ -60,7 +63,7 @@ public class Main {
             save payload
 
          */
-        FileOutputStream fos = new FileOutputStream("c:/DATA/TEST/" + fileName);
+        FileOutputStream fos = new FileOutputStream( PATH + File.separator + fileName);
         ObjectOutputStream out = new ObjectOutputStream(fos);
         out.writeObject(sp);
         out.close();
@@ -71,7 +74,7 @@ public class Main {
             Back process
 
          */
-        FileInputStream fis = new FileInputStream("c:/DATA/TEST/" + fileName);
+        FileInputStream fis = new FileInputStream( PATH + File.separator + fileName);
         ObjectInputStream in = new ObjectInputStream(fis);
         StreamPayload spBack = (StreamPayload)in.readObject();
         in.close();
