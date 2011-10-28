@@ -6,17 +6,40 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Main {
 
+	/**
+	 * 
+	 * @param object
+	 */
+	public static void go(Object object){
+		System.out.println("object class" + object.getClass().getTypeParameters() );
+		
+		System.out.println(object.getClass().getTypeParameters()[0].getName());
+		
+		
+		System.out.println("---");
+		
+		Field[] fields = object.getClass().getDeclaredFields();
+		for (int i = 0; i < fields.length; i++) {
+			System.out.println( i + "|" + fields[i].getGenericType() );
+		}
+		
+	}//----
+	
      /**
      *
      * @param argv
      */
     public static void main(String[] argv) throws Exception{
+    	
     	
     	String PATH = new java.io.File("").getAbsolutePath();
     	System.out.println( PATH );
@@ -29,6 +52,8 @@ public class Main {
        sc.setName("name");
        sc.setValue( 10L );
 
+       System.out.println("sc.name:" + sc.getClass().getName());
+       
         List<SimpleClass> list = new ArrayList<SimpleClass>();
         for(int i = 0;i<1000;i++){
            sc = new SimpleClass();
@@ -39,7 +64,25 @@ public class Main {
             list.add( sc );
 
         }
-
+        
+        System.out.println("+++++++++++");
+        
+        Type types = list.getClass().getGenericSuperclass();// .getGenericParameterTypes();
+        //Now assuming that the first parameter to the method is of type List<Integer>
+        ParameterizedType pType = (ParameterizedType) types;
+        Class<?> clazz = (Class<?>) pType.getActualTypeArguments()[0];
+        System.out.println(clazz); //prints out java.lang.Integer
+        
+        
+        System.out.println(".......");
+    	TestNameClass<List<SimpleClass>> t = new TestNameClass<List<SimpleClass>>();
+    	t.pring2(list );
+    	System.out.println(".......");
+        
+        System.out.println("list:" + list.getClass().getName());
+        
+        go(list);
+        
        long bT = System.currentTimeMillis();
        StreamPayload<List<SimpleClass>> sp = new StreamPayload<List<SimpleClass>>( false );
         sp.setId("sp_id");
