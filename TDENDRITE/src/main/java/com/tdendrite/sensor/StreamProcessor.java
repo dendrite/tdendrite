@@ -50,6 +50,6 @@ public class StreamProcessor {
 		}
 		sp.do_();
 		
-	}
+	}// MAIN
 	
 }
