@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.3.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
+       default-autowire="byName">
+
+
+    <context:component-scan base-package="ru.test"/>
+    <!--<context:load-time-weaver/>-->
+    <task:annotation-driven/>  <!-- влияет на @Scheduled -->
+
+    <bean id="simplePass" class="java.lang.String">
+		<constructor-arg index="0" value="${simplePass}"/>
+	</bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>simpletest_extra</value>
+<!--
+                <value>api_messages</value>
+				<value>gui</value>
+				<value>action_code</value>
+				<value>register</value>
+				<value>errorCodes</value>
+				<value>fraud</value>
+				<value>airports</value>
+				<value>cities</value>
+				<value>countries</value>
+-->
+			</list>
+		</property>
+	</bean>
+
+</beans>
