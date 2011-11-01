@@ -25,12 +25,14 @@ public class SimpleTrigger {
     public static void main(String[] args){
 
         SimpleTrigger st = new SimpleTrigger();
-        String fileName = st.getFileName();
-        System.out.println( "FILE_NAME IS = " + fileName );
+//        String fileName = st.getFileName();
+//        System.out.println( "FILE_NAME IS = " + fileName );
 
         //simplePass
         //ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:spring/application-context.xml", SimpleTrigger.class);
-        ApplicationContext context = new ClassPathXmlApplicationContext( "/spring/application-context.xml" );
+        //ApplicationContext context = new ClassPathXmlApplicationContext( "/spring/application-context.xml" );
+        //ApplicationContext context = new ClassPathXmlApplicationContext( "application-context.xml", SimpleTrigger.class );
+        ApplicationContext context = new ClassPathXmlApplicationContext( "application-context_non_annotation.xml", SimpleTrigger.class );
 
         String string = (String)context.getBean( "simplePass" );
         System.out.println( string );

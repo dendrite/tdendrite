@@ -1,5 +1,7 @@
 package ru.test;
 
+import javax.annotation.Resource;
+
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +18,14 @@ public class ShTimer {
     //@Scheduled(fixedRate = TRIGGER_TIME)
     @Scheduled(fixedDelay = TRIGGER_TIME)
     public void generateOut(){
+    	try {
+    		// sleep randomly current thread for some seconds - just emulate real situation
+  		    Thread.sleep( Math.round( Math.random() * 3000 ) );
+  	    } catch (InterruptedException e) {
+  		    e.printStackTrace();  
+  	    }
         System.out.println( "fired generator times:" + value++ + "" );
-    }
+    }//----------------------------------------------------------------------------------------------
 
     /**
      *
@@ -25,6 +33,5 @@ public class ShTimer {
     public void justPrint(){
         System.out.println(" just print it");
     }
-
 
 }
