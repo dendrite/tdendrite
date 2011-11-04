@@ -26,8 +26,8 @@ public class MainQP {
 		try {
 
 			String PATH = new java.io.File("").getAbsolutePath();
-			
-	        FileOutputStream fos = new FileOutputStream( PATH + File.separator + "object1");
+			System.out.println( PATH );
+	        FileOutputStream fos = new FileOutputStream( PATH + File.separator + "object12");
 	        ObjectOutputStream out = new ObjectOutputStream(fos);
 	        out.writeObject( ipp.resturn() );
 	        out.close();
