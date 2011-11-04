@@ -1,4 +1,4 @@
-package com.tdenrite.twitter.parser;
+package com.tdendrite.twitter.parser;
 
 import java.io.BufferedReader;
 import java.io.File;
