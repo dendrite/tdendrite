@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
-import sun.util.resources.LocaleNames_ru;
+//import sun.util.resources.LocaleNames_ru;
 
 import javax.annotation.Resource;
 import java.util.Locale;
@@ -20,16 +20,16 @@ public class SimpleBean {
 
     private static final Logger logger = Logger.getLogger( SimpleBean.class );
 
-    @Resource
-	private ShTimer shTimer;
+//    @Resource
+//	private ShTimer shTimer;
 
-    @Resource
-	private MessageSource messageSource;
+//    @Resource
+//	private MessageSource messageSource;
     private Locale locale;
 
     public String getParameter01(){
 
-        shTimer.justPrint();
+       // shTimer.justPrint();
 
         locale = Locale.getDefault();
 
@@ -39,7 +39,7 @@ public class SimpleBean {
         System.out.println("country is:" + locale.getCountry());
         System.out.println( "message" );
 
-        System.out.println( messageSource.getMessage( "test.name", null, locale ) );
+        //System.out.println( messageSource.getMessage( "test.name", null, locale ) );
 
         return null;
     }
