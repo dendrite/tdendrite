@@ -66,9 +66,9 @@ public class MainParse {
 			   TFileInputStream tfis = new TFileInputStream(t);
 			   //System.out.println( f.getName() + "\n");
 			   in = new ObjectInputStream(tfis);
-			   list = (List<UserStatus>)in.readObject();
+			   List<com.tdendrite.core.payload.UserStatus> list2 = (List<com.tdendrite.core.payload.UserStatus>)in.readObject();
 				i = 0;
-				for (UserStatus userStatus : list) {
+				for (com.tdendrite.core.payload.UserStatus userStatus : list2) {
 					System.out.println( userStatus );
 					if( i++ > 5 )
 					break;

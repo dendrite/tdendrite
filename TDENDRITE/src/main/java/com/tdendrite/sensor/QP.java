@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.tdendrite.core.SimpleClass;
-import com.tdendrite.core.StreamPayload;
+import com.tdendrite.core.payload.StreamPayload;
 
 public class QP implements IPayloadProcessor {
 

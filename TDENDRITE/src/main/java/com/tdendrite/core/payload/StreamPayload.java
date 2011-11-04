@@ -1,4 +1,4 @@
-package com.tdendrite.core;
+package com.tdendrite.core.payload;
 
 import java.io.*;
 import java.util.zip.DataFormatException;
